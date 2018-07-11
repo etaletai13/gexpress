@@ -7,14 +7,16 @@
   "license": "MIT",
   "devDependencies": {
     "create-dmg": "^3.1.0",
-    "nativefier": "^7.6.4"
+    "nativefier": "^7.6.4",
+    "rpm-builder": "^0.7.0"
   },
   "scripts": {
     "postinstall": "yarn build.linux && yarn build.mac && yarn build.win32",
-    "build.linux": "cp src/index.js index.js && sed -i .clean 's/PLATFORM/linux/g' index.js && node index.js",
-    "build.mac": "cp src/index.js index.js && sed -i .clean 's/PLATFORM/mac/g' index.js && node index.js",
-    "build.win32": "cp src/index.js index.js && sed -i .clean 's/PLATFORM/win32/g' index.js && node index.js",
+    "build.linux": "cp src/index.js index.js && sed -i \"s/PLATFORM/linux/g\" index.js && node index.js",
+    "build.mac": "cp src/index.js index.js && sed -i \"s/PLATFORM/mac/g\" index.js && node index.js",
+    "build.win32": "cp src/index.js index.js && sed -i \"s/PLATFORM/win32/g\" index.js && node index.js",
     "prepare": "yarn package.mac",
-    "package.mac": "mkdir -p Build/Releases && yarn create-dmg --overwrite 'GExpress-darwin-x64/GExpress.app' Build/Releases"
+    "package.linux.rpm": "node buildRpm.js",
+    "package.mac": "mkdir -p Build/Releases && yarn create-dmg --overwrite \"GExpress-darwin-x64/GExpress.app\" Build/Releases"
   }
 }

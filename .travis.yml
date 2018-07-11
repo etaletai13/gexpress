@@ -2,13 +2,14 @@ os: osx
 language: node_js
 node_js: '8.0.0'
 before_install:
-  - brew install gsed
-  - brew install wine
+  - brew install rpm wine
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
   file_glob: true
-  file: "./Build/Releases/*"
+  file: 
+  - "./Build/Releases/*.rpm"
+  - "./Build/Releases/*.dmg"
   on:
     repo: etaletai13/MSCPlayer
     tags: true
