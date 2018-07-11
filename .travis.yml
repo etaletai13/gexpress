@@ -1,8 +1,7 @@
 os: osx
 language: node_js
 node_js: '8.0.0'
-before_script:
-  - brew update
+before_install:
   - brew install wine
 deploy:
   provider: releases
