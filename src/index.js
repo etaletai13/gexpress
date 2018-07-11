@@ -1,9 +1,9 @@
 var nativefier = require('nativefier').default;
 
 var options = {
-  name: 'MSCPlayer',
+  name: 'GExpress',
   platform: 'PLATFORM',
-  targetUrl: "https://musicoin.org",
+  targetUrl: "https://express.google.com/u/0",
   counter: true,
   bounce: true,
   width: 500,
@@ -21,12 +21,12 @@ var options = {
   fullScreen: false,
   maximize: false,
   zoom: 1,
-  internalUrls: '.*?\.musicoin\.*?',
+  internalUrls: '.*?\.google\.*?',
   singleInstance: true,
   win32metadata: {
-    ProductName: 'MSCPlayer',
-    InternalName: 'MSCPlayer',
-    FileDescription: 'MSCPlayer'
+    ProductName: 'GExpress',
+    InternalName: 'GExpress',
+    FileDescription: 'GExpress'
   },
   fileDownloadOptions: {
     saveAs: true

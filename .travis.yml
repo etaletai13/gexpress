@@ -2,6 +2,7 @@ os: osx
 language: node_js
 node_js: '8.0.0'
 before_install:
+  - brew install gsed
   - brew install wine
 deploy:
   provider: releases
