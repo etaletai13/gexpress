@@ -6,12 +6,15 @@ before_install:
   - brew install rpm 
   - brew install wine
 script:
-  - yarn build.linux && echo "OK √"
-  - yarn build.mac && echo "OK √"
-  - travis_wait 15 yarn build.win32 && echo "OK √"
+  - travis_wait yarn build.linux && echo "OK √"
+  - travis_wait yarn build.mac && echo "OK √"
+  - travis_wait yarn build.win32 && echo "OK √"
 after_success:
-  - yarn package && git add Build/Release/* && echo "OK √"
+  - travis_wait yarn package && git add Build/Release/* && echo "OK √"
 before_deploy:
+  - git add ./Build/Releases/*
+  - git commit -am --amend
+  - git tag 'v1.0.0'
   - yarn publish-release --assets Build/Releases/*.dmg,Build/Releases/*.msi,Build/Releases/*.rpm,Build/Release/*.deb --skipAssetsCheck --token ${GH_TOKEN}
 deploy:
   provider: releases
