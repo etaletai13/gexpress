@@ -25,9 +25,10 @@
   "bugs": "https://github.com/etaletai13/GExpress/issues",
   "repository": "git@github.com:etaletai13/GExpress",
   "scripts": {
-    "build.linux": "cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/linux/g\" index.js && node index.js",
-    "build.mac": "cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/mac/g\" index.js && node index.js",
-    "build.win32": "cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/win32/g\" index.js && node index.js",
+    "build.linux": "rm -f index.js && cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/linux/g\" index.js && node index.js",
+    "build.mac": "rm -f index.js && cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/mac/g\" index.js && node index.js",
+    "build.win32": "rm -f index.js && cp src/index.js index.js && yarn build.win.32",
+    "build.win.32": "sed -i .tmp \"s/PLATFORM/win32/g\" index.js && node index.js",
     "package": "mkdir -p Build/Releases && node buildRpm.js && yarn create-dmg --overwrite \"GExpress-darwin-x64/*.app Build/Releases/ && yarn msi-packager ./GExpress-win32-x64/**/* ./Build/Releases/GExpress.msi -n 'GExpress -v 'v1.0.0' -u 'd4dc6007-7038-4457-aea3-8bfc26d02d8e' -m 'Etaletai' -i './icon.ico' -e 'GExpress.exe' --local"
   }
 }
