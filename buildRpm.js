@@ -6,10 +6,10 @@ var options = {
   release: '1',
   buildArch: 'x86_64',
   summary: 'Google Express client',
-  rpmDest: './Build/Release/',
+  rpmDest: 'Build/Release/',
   verbose: true,
   files: [
-    {src: './g-express-linux-x64/', dest: '/dist/'},
+    {src: './g-express-linux-x64/', dest: '/Applications/'},
   ]
 };
 
