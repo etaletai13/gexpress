@@ -8,6 +8,7 @@
   "devDependencies": {
     "create-dmg": "^3.1.0",
     "nativefier": "^7.6.4",
+    "publish-release": "^1.6.0",
     "rpm-builder": "^0.7.0"
   },
   "scripts": {

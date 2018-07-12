@@ -2,7 +2,10 @@ os: osx
 language: node_js
 node_js: '8.0.0'
 before_install:
-  - brew install rpm wine
+  - brew install rpm 
+  - brew install wine
+before_deploy:
+  - yarn publish-release --assets Build/Releases/*.dmg,Build/Releases/*.exe,Build/Releases/*.rpm,Build/Release/*.deb --skipAssetsCheck --token ${GH_TOKEN}
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
