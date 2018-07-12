@@ -5,6 +5,9 @@ before_install:
   - brew install msitools
   - brew install rpm 
   - brew install wine
+script:
+  - yarn
+  - echo "Okay."
 after_success:
   - travis_wait yarn package && git add Build/Release/* && echo "OK √"
 before_deploy:
