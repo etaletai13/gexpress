@@ -5,8 +5,18 @@ before_install:
   - brew install msitools
   - brew install rpm 
   - brew install wine
+before_script:
+  - yarn --ignore-scripts
+script:
+  - yarn build.linux
+  - yarn build.mac 
+  - yarn build.win32
+after_success:
+  - yarn package.linux
+  - yarn package.mac
+  - yarn package.win32
 before_deploy:
-  - yarn publish-release --assets Build/Releases/*.dmg,Build/Releases/*.exe,Build/Releases/*.rpm,Build/Release/*.deb --skipAssetsCheck --token ${GH_TOKEN}
+  - yarn publish-release --assets Build/Releases/*.dmg,Build/Releases/*.msi,Build/Releases/*.rpm,Build/Release/*.deb --skipAssetsCheck --token ${GH_TOKEN}
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
