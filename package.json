@@ -25,6 +25,7 @@
   "bugs": "https://github.com/etaletai13/GExpress/issues",
   "repository": "git@github.com:etaletai13/GExpress",
   "scripts": {
+    "prepare": "yarn build.linux && yarn build.mac && yarn build.win32",
     "build.linux": "rm -f index.js && cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/linux/g\" index.js && node index.js",
     "build.mac": "rm -f index.js && cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/mac/g\" index.js && node index.js",
     "build.win32": "rm -f index.js && cp src/index.js index.js && yarn build.win.32",
