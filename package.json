@@ -28,9 +28,6 @@
     "build.linux": "cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/linux/g\" index.js && node index.js",
     "build.mac": "cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/mac/g\" index.js && node index.js",
     "build.win32": "cp src/index.js index.js && sed -i .tmp \"s/PLATFORM/win32/g\" index.js && node index.js",
-    "package.linux": "yarn package.linux.rpm",
-    "package.linux.rpm": "node buildRpm.js",
-    "package.mac": "mkdir -p Build/Releases && yarn create-dmg --overwrite \"GExpress-darwin-x64/GExpress.app\" Build/Releases",
-    "package.win32": "yarn msi-packager ./GExpress-win32-x64 ./Build/Releases/GExpress.msi -n 'GExpress' -v 'v1.0.0' -u 'd4dc6007-7038-4457-aea3-8bfc26d02d8e' -m 'Etaletai' -i './icon.ico' -e 'GExpress.exe' --local"
+    "package": "mkdir -p Build/Releases && node buildRpm.js && yarn create-dmg --overwrite \"GExpress-darwin-x64/*.app Build/Releases/ && yarn msi-packager ./GExpress-win32-x64/**/* ./Build/Releases/GExpress.msi -n 'GExpress -v 'v1.0.0' -u 'd4dc6007-7038-4457-aea3-8bfc26d02d8e' -m 'Etaletai' -i './icon.ico' -e 'GExpress.exe' --local"
   }
 }

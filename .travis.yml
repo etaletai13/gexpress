@@ -6,19 +6,17 @@ before_install:
   - brew install rpm 
   - brew install wine
 script:
-  - echo off
-  - echo "Building for linux...\\n" 
-  - yarn build.linux && echo "OK √\\nPacking for Linux..."
-  - yarn package.linux && echo "\\nOK √\\nBuilding for OSX...\\n" 
-  - yarn build.mac && echo "OK √\\nPacking for OSX..."
-  - yarn package.mac && echo "\nOK √\\nBuilding for Windows...\\n" 
-  - yarn build.win32 && echo "OK √\\nPacking for Windows...\\n"
-  - yarn package.win32 && echo "\n\OK √"
+  - yarn build.linux && echo "OK √"
+  - yarn build.mac && echo "OK √"
+  - yarn build.win32 && echo "OK √"
+after_success:
+  - yarn package && git add Build/Release/* && echo "OK √"
 before_deploy:
   - yarn publish-release --assets Build/Releases/*.dmg,Build/Releases/*.msi,Build/Releases/*.rpm,Build/Release/*.deb --skipAssetsCheck --token ${GH_TOKEN}
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
+  skip_cleanup: true
   file_glob: true
   file:
   - "./Build/Releases/*.msi"
