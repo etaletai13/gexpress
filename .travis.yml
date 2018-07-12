@@ -6,18 +6,24 @@ before_install:
   - brew install rpm 
   - brew install wine
 script:
-  - echo "Building for linux...\n" yarn build.linux && echo "OK √\nPacking for Linux..." && yarn package.linux && echo "\nOK √\n"
-  - echo "Building for OSX...\n" yarn build.mac && echo "OK √\nPacking for OSX..." && yarn package.mac && echo "\nOK √\n"
-  - echo "Building for Windows...\n" yarn build.win32 && echo "OK √\nPacking for Windows..." && yarn package.win32 && echo "\nOK √"
+  - echo off
+  - echo "Building for linux...\\n" 
+  - yarn build.linux && echo "OK √\\nPacking for Linux..."
+  - yarn package.linux && echo "\\nOK √\\nBuilding for OSX...\\n" 
+  - yarn build.mac && echo "OK √\\nPacking for OSX..."
+  - yarn package.mac && echo "\nOK √\\nBuilding for Windows...\\n" 
+  - yarn build.win32 && echo "OK √\\nPacking for Windows...\\n"
+  - yarn package.win32 && echo "\n\OK √"
 before_deploy:
   - yarn publish-release --assets Build/Releases/*.dmg,Build/Releases/*.msi,Build/Releases/*.rpm,Build/Release/*.deb --skipAssetsCheck --token ${GH_TOKEN}
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
   file_glob: true
-  file: 
+  file:
+  - "./Build/Releases/*.msi"
   - "./Build/Releases/*.rpm"
   - "./Build/Releases/*.dmg"
   on:
-    repo: etaletai13/MSCPlayer
+    repo: etaletai13/gexpress
     tags: true
