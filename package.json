@@ -31,8 +31,6 @@
     "package.linux": "yarn package.linux.rpm",
     "package.linux.rpm": "node buildRpm.js",
     "package.mac": "mkdir -p Build/Releases && yarn create-dmg --overwrite \"GExpress-darwin-x64/GExpress.app\" Build/Releases",
-    "package.win32": "yarn msi-packager ./GExpress-win32-x64 ./Build/Releases/GExpress.msi -n 'GExpress' -v 'v1.0.0' -u 'd4dc6007-7038-4457-aea3-8bfc26d02d8e' -m 'Etaletai' -i './icon.ico' -e 'GExpress.exe' --local",
-    "postinstall": "yarn build.linux && yarn build.mac && yarn build.win32",
-    "prepare": "yarn package.linux && yarn package.mac && yarn package.win32"
+    "package.win32": "yarn msi-packager ./GExpress-win32-x64 ./Build/Releases/GExpress.msi -n 'GExpress' -v 'v1.0.0' -u 'd4dc6007-7038-4457-aea3-8bfc26d02d8e' -m 'Etaletai' -i './icon.ico' -e 'GExpress.exe' --local"
   }
 }
