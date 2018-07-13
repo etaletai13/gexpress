@@ -8,8 +8,6 @@ before_install:
 script:
   - yarn
   - echo "Okay."
-after_success:
-  - travis_wait yarn package && git add Build/Release/* && echo "OK √"
 before_deploy:
   - git add ./Build/Releases/*
   - git commit -am --amend
@@ -21,9 +19,9 @@ deploy:
   skip_cleanup: true
   file_glob: true
   file:
-  - "./Build/Releases/*.msi"
-  - "./Build/Releases/*.rpm"
-  - "./Build/Releases/*.dmg"
+  - "./Build/Releases/GExpress.msi"
+  - "./g-express-linux-x64"
+  - "./Build/Releases/GExpress.dmg"
   on:
     repo: etaletai13/gexpress
     tags: true
