@@ -5,9 +5,8 @@ before_install:
   - brew install msitools
   - brew install rpm 
   - brew install wine
-script:
-  - yarn
-  - echo "Okay."
+after_success:
+  - yarn package
 before_deploy:
   - git add ./Build/Releases/*
   - git commit -am --amend
