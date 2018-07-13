@@ -9,7 +9,6 @@ after_success:
   - travis_wait yarn build.linux
   - travis_wait yarn package.linux
   - travis_wait yarn build.mac
-  - travis_wait yarn package.mac
   - travis_wait yarn build.win32
   - travis_wait yarn package.win32
 before_deploy:
