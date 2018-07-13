@@ -4,11 +4,8 @@ node_js: '8.0.0'
 before_install:
   - brew install msitools
   - brew install wine
-after_success:
-  - git add ./Build/Releases/*
-  - git commit -am --amend
-  - git tag 'v1.0.0'
-  - yarn publish-release --assets Build/Releases/*.dmg,Build/Releases/*.msi,Build/Releases/*.rpm,Build/Release/*.deb --skipAssetsCheck --token ${GH_TOKEN}
+script:
+  - node src/mac.js
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
