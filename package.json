@@ -24,10 +24,7 @@
   "bugs": "https://github.com/etaletai13/GExpress/issues",
   "repository": "git@github.com:etaletai13/GExpress",
   "scripts": {
-    "postinstall": "yarn build.mac",
-    "build.mac": "node src/mac.js",
-    "build.linux": "node src/linux.js", 
-    "build.win32": "node src/win32.js",
+    "postinstall": "node src/mac.js && node src/linux.js && node src/win32.js",
     "package.linux": "echo 'Nothing to do.'",
     "package.mac": "mkdir -p Build/Release && yarn create-dmg --overwrite \"./GExpress-darwin-x64/GExpress.app\" \"Build/Release/\"",
     "package.win32": "mkdir -p Build/Release && yarn msi-packager \"./GExpress-win32-x64\" \"Build/Release/GExpress-win32-x64.msi\" -n \"GExpress\" -v \"1.0.0\" -m \"Etaletai\" -i \"./src/icon.ico\" -u \"37075e8f-a0b5-40c4-a4bc-1a930b4b1145\" -e \"GExpress.exe\" --local",
