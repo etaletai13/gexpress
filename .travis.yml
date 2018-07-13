@@ -1,10 +1,10 @@
 os: osx
 language: node_js
-node_js: '4.0.0'
+node_js: '8.0.0'
 before_install:
   - brew install msitools
   - brew install wine
-before_deploy:
+after_success:
   - git add ./Build/Releases/*
   - git commit -am --amend
   - git tag 'v1.0.0'
