@@ -6,7 +6,12 @@ before_install:
   - brew install rpm 
   - brew install wine
 after_success:
-  - yarn package
+  - travis_wait yarn build.linux
+  - travis_wait yarn package.linux
+  - travis_wait yarn build.mac
+  - travis_wait yarn package.mac
+  - travis_wait yarn build.win32
+  - travis_wait yarn package.win32
 before_deploy:
   - git add ./Build/Releases/*
   - git commit -am --amend
