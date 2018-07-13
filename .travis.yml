@@ -1,16 +1,9 @@
 os: osx
 language: node_js
-node_js: '8.0.0'
+node_js: '4.0.0'
 before_install:
   - brew install msitools
-  - brew install rpm 
   - brew install wine
-after_install:
-  - travis_wait yarn build.linux
-  - travis_wait yarn package.linux
-  - travis_wait yarn build.mac
-  - travis_wait yarn build.win32
-  - travis_wait yarn package.win32
 before_deploy:
   - git add ./Build/Releases/*
   - git commit -am --amend
