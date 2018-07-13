@@ -4,11 +4,11 @@ git:
 os: osx
 language: node_js
 node_js: '8.0.0'
-before_install:
-  - brew install msitools
-  - brew install wine
+addons:
+  apt:
+  - "msitools"
+  - "wine"
 script:
-  - travis_wait node src/win32.js
   - node src/linux.js
   - node src/mac.js
 deploy:
@@ -17,9 +17,7 @@ deploy:
   skip_cleanup: true
   file_glob: true
   file:
-  - "./Build/Releases/GExpress.msi"
-  - "./g-express-linux-x64"
-  - "./Build/Releases/GExpress.dmg"
+  - "./Build/Releases/*"
   on:
     repo: etaletai13/gexpress
     tags: true
