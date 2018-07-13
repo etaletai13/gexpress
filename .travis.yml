@@ -5,6 +5,7 @@ before_install:
   - brew install msitools
   - brew install wine
 script:
+  - node src/linux.js
   - node src/mac.js
 deploy:
   provider: releases
