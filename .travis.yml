@@ -5,7 +5,7 @@ before_install:
   - brew install msitools
   - brew install rpm 
   - brew install wine
-after_success:
+after_install:
   - travis_wait yarn build.linux
   - travis_wait yarn package.linux
   - travis_wait yarn build.mac
