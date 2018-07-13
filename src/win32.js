@@ -3,6 +3,7 @@ var nativefier = require('nativefier').default;
 var options = {
   name: 'GExpress',
   platform: 'win32',
+  arch: 'x86_64'
   targetUrl: "https://express.google.com/u/0",
   counter: true,
   bounce: true,
